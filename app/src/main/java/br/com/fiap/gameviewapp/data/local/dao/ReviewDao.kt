@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import br.com.fiap.gameviewapp.data.local.entity.ReviewEntity
-import br.com.fiap.gameviewapp.data.remote.dto.ReviewEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
