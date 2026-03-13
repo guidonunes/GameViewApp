@@ -4,16 +4,25 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import br.com.fiap.gameviewapp.data.local.database.AppDatabase
+import br.com.fiap.gameviewapp.data.remote.api.RetrofitClient
+import br.com.fiap.gameviewapp.data.repository.ReviewRepository
 import br.com.fiap.gameviewapp.ui.theme.GameViewAppTheme
 
 class MainActivity : ComponentActivity() {
+
+    private val api by lazy {
+        RetrofitClient().getReviewApi()
+    }
+
+    private val dao by lazy {
+        AppDatabase.getDatabase(applicationContext).reviewDao()
+    }
+
+    private val repository by lazy {
+        ReviewRepository(api, dao)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
