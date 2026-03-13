@@ -36,6 +36,11 @@ android {
     }
 }
 
+// Disable KSP from adding source sets to the Kotlin DSL to avoid AGP 8.1+ conflict
+ksp {
+    arg("kotlin.sourceSets.enabled", "false")
+}
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
