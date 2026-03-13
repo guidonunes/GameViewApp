@@ -13,12 +13,12 @@ interface ReviewDao {
 
     // Listar todas as reviews do banco de dados local
     @Query("SELECT * FROM reviews")
-    fun getReceitas(): Flow<List<ReviewEntity>>
+    fun getReviews(): Flow<List<ReviewEntity>>
 
     // Cadastrar todas as reviews obtidas na API
     // no banco de dados local
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(receitas: List<ReviewEntity>)
+    suspend fun insertAll(reviews: List<ReviewEntity>)
 
     // Apagar todas as receitas do banco de dados local
     @Query("DELETE FROM reviews")
